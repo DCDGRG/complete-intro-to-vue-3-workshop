@@ -1,10 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Playground — Complete Intro to Vue 3</title>
-  </head>
-  <body></body>
+</head>
+
+<body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<h1>Hello Frontend Masters!</h1>
+<div id="app">
+    <p v-if="message.lenght % 2 ===0"> EVEN:{{message.toUpperCase()}} </p>
+    {{message}}
+    <p v-else> Odd:{{ message.toUpperCase() }} </p>
+
+    <ul v-for="item in listOfNumbers">
+        <li >
+            {{ item.id }}
+            <ul>
+                <li v-for="number in item.list">
+                    {{ number }}
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+</div>
+
+<script>
+    //vue3
+    const {createApp} = Vue
+
+    //vue2
+
+    createApp({
+        data() {
+            return {
+                message: 'Hello Vue!',
+                listOfNumbers: [
+                    {name:0, id:'04f68d0a-76b9-44e8-9542-a6d8eadeff51', list:[1, 2, 3]},
+                    {name:1, id:'2a26fef4-85af-433a-8bdb-d0c2c9ab3da0', list:[1, 2, 3]} ,
+                    {name:2, id:'533bb9fc-932b-4938-b637-c2e2cf36e80e', list:[1, 2, 3]} ,
+                    {name:3, id:'b398d277-b0d4-4248-aab0-410891024206', list:[1, 2, 3]},
+                    {name:4, id:'0515206f-8afa-4412-a419-8af9884484db', list:[1, 2, 3]}
+                ]
+            }
+        }
+    }).mount('#app')
+</script>
+
+</body>
 </html>
